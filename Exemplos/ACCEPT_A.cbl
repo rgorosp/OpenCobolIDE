@@ -1,10 +1,16 @@
       ******************************************************************
       * Author: EMERSON S MOTTA
-      * Date: 01-05-22
+      * Date: 27-02-26
       * Purpose: COMANDO ACCEPT(ACEITAR)
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ACCEPT_A.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION. 
+       SPECIAL-NAMES. 
+           DECIMAL-POINT IS COMMA.
+       INPUT-OUTPUT SECTION. 
+       FILE-CONTROL. 
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
