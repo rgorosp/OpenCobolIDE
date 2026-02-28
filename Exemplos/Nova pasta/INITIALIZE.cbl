@@ -1,0 +1,46 @@
+      ******************************************************************
+      * Author: EMERSON S MOTTA
+      * Date: 07-05-24
+      * Purpose: COMANDO INITIALIZE, INICIALIZA AS VARIAVEIS, RESETA
+      *      OS VALORES
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PGM-INITIALIZE.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01  WS-VAR.
+           03 WS-NOME        PIC X(10).
+           03 FILLER         PIC X(05) VALUE 'MOTTA'.
+           03 WS-IDADE       PIC 9(02) VALUE 46.
+       PROCEDURE DIVISION.
+       S000-INI SECTION.
+       P000-INI.
+            DISPLAY 'DISPLAY 1:'
+            DISPLAY WS-VAR
+
+            INITIALIZE WS-VAR REPLACING ALPHANUMERIC BY SPACES
+                                        NUMERIC      BY ZEROS
+
+            DISPLAY 'DISPLAY 2:'
+            DISPLAY WS-VAR
+
+            INITIALIZE WS-VAR REPLACING ALPHANUMERIC BY 'JOB'
+                                        NUMERIC      BY 99
+
+            DISPLAY 'DISPLAY 3:'
+            DISPLAY WS-VAR
+
+            DISPLAY 'DISPLAY: 4'
+            INITIALIZE WS-VAR
+            DISPLAY WS-VAR
+            .
+       P000-EXIT.
+            EXIT.
+
+       S900-STOP SECTION.
+       P900-STOP.
+            STOP RUN.
+       P900-EXIT.
+       END PROGRAM PGM-INITIALIZE.
