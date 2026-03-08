@@ -1,6 +1,6 @@
       ******************************************************************
       * Author: EMERSON S MOTTA
-      * Date: 04-07-24
+      * Date: 08-03-26
       * Purpose: MOSTRAR LEITURA DE ARQUIVO NO COBOL
       * Tectonics: cobc
       ******************************************************************
@@ -8,8 +8,7 @@
        PROGRAM-ID. PGMARQ02.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
-       SPECIAL-NAMES.
-           DECIMAL-POINT IS COMMA.
+       SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT STUDENT ASSIGN TO 'C:\Arquivos\STUDENT.txt'
@@ -28,6 +27,7 @@
        01  FILLER REDEFINES WS-DADOS.
            03 WS-COD-STUDENT         PIC 9(05).
            03 WS-NOM-STUDENT         PIC X(25).
+
       * >>> FILE STATUS
        77  WS-FS-STU                 PIC 9(02) VALUE ZEROS.
       * >>> MENSAGENS
@@ -59,7 +59,13 @@
            03 WS-SE-F                PIC 9(02) VALUE ZEROS.
       * >>> CONTADORES E ACUMULADORES
        77  WS-LER-STU                PIC 99    VALUE ZEROS.
-       77  WS-EOF                    PIC A     VALUE SPACE.
+
+      * >>> CONTROLE DE FIM DE ARQUIVO
+       01  WS-EOF.
+           03 WS-OK        PIC X VALUE 'N'.
+              88 OK        VALUE 'S'.
+              88 NOTOK     VALUE 'N'.
+
       * >>> PROCEDURE
        PROCEDURE DIVISION.
        S000 SECTION.
@@ -74,7 +80,7 @@
             MOVE    WS-HORA(3:2) TO WS-MI-I
             MOVE    WS-HORA(5:2) TO WS-SE-I
 
-            MOVE    'N' TO WS-EOF
+            SET NOTOK TO TRUE
 
             PERFORM P010-ABERTURA
             PERFORM P020-LEITURA UNTIL WS-EOF = 'S'
@@ -98,7 +104,7 @@
        P020-LEITURA.
             READ STUDENT INTO WS-DADOS
                  AT END
-                    MOVE 'S' TO WS-EOF
+                    SET OK TO TRUE
              NOT AT END
                     ADD 1 TO WS-LER-STU
                     DISPLAY WS-COD-STUDENT ' - ' WS-NOM-STUDENT

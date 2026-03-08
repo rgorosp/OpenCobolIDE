@@ -1,6 +1,6 @@
       ******************************************************************
       * Author: EMERSON S MOTTA
-      * Date: 17-08-23
+      * Date: 08-03-26
       * Purpose: Criar uma tabela com 12 ocorrências, inicializar a tabela
       * e carrega-la com valores múltiplos de 11. Solicitar a posição da
       * ocorrência na console e apresentar o conteúdo da ocorrência na console.
@@ -26,9 +26,7 @@
            03 WS-LINHA               PIC 9(03) OCCURS 12 TIMES.
 
        77  WS-VALOR                  PIC 999   VALUE ZEROS.
-
        77  WS-INDICE                 PIC 99    VALUE ZEROS.
-
        77  WS-CODIGO                 PIC 99    VALUE ZEROS.
 
        01  FILLER                    PIC X(40).

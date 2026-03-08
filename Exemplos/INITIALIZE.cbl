@@ -1,6 +1,6 @@
       ******************************************************************
       * Author: EMERSON S MOTTA
-      * Date: 07-05-24
+      * Date: 08-03-26
       * Purpose: COMANDO INITIALIZE, INICIALIZA AS VARIAVEIS, RESETA
       *      OS VALORES
       * Tectonics: cobc
